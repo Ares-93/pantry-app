@@ -8,7 +8,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import PantryForm from "../components/pantryForm";
+import PantryForm from "../components/PantryForm";
 import SearchBar from "../components/SearchBar";
 import {
   Card,
@@ -20,6 +20,7 @@ import {
   Button,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import styles from "../styles/page.module.css";
 
 const Home = () => {
   const [items, setItems] = useState([]);
@@ -57,18 +58,22 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Pantry Management</h1>
-      <PantryForm
-        currentId={currentId}
-        setCurrentId={setCurrentId}
-        items={items}
-      />
-      <SearchBar onSearch={handleSearch} />
-      <List>
+      <div className={styles.form}>
+        <PantryForm
+          currentId={currentId}
+          setCurrentId={setCurrentId}
+          items={items}
+        />
+      </div>
+      <div className={styles.searchBar}>
+        <SearchBar onSearch={handleSearch} />
+      </div>
+      <List className={styles.list}>
         {filteredItems.map((item) => (
           <ListItem key={item.id}>
-            <Card>
+            <Card className={styles.card}>
               <CardContent>
                 <Typography variant="h5" component="div">
                   {item.name}
@@ -79,10 +84,16 @@ const Home = () => {
                 <IconButton
                   onClick={() => handleDelete(item.id)}
                   aria-label="delete"
+                  className={styles.button}
                 >
                   <DeleteIcon />
                 </IconButton>
-                <Button onClick={() => setCurrentId(item.id)}>Edit</Button>
+                <Button
+                  onClick={() => setCurrentId(item.id)}
+                  className={styles.editButton}
+                >
+                  Edit
+                </Button>
               </CardContent>
             </Card>
           </ListItem>

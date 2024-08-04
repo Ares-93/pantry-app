@@ -1,0 +1,17 @@
+/* styles/globals.css */
+
+body {
+  background-color: #000;
+  color: #c30a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  text-align: center;
+}

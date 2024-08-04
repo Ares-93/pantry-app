@@ -1,0 +1,40 @@
+/* styles/page.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.searchBar {
+  width: 50%;
+  margin-bottom: 2rem;
+}
+
+.list {
+  width: 50%;
+}
+
+.card {
+  margin-bottom: 1rem;
+  background-color: #333;
+  color: #fff;
+}
+
+.button {
+  background-color: #ffd700 !important; /* Gold */
+  color: #000 !important;
+}
+
+.editButton {
+  margin-top: 1rem;
+  background-color: #ffd700 !important; /* Gold */
+  color: #000 !important;
+}
