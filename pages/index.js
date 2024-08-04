@@ -8,7 +8,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import PantryForm from "../components/PantryForm";
+import PantryForm from "../components/pantryForm";
 import SearchBar from "../components/SearchBar";
 import {
   Card,
