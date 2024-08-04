@@ -8,7 +8,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import PantryForm from "../components/PantryForm";
+import PantryForm from "../components/pantryForm";
 import SearchBar from "../components/SearchBar";
 import {
   Card,
@@ -20,7 +20,7 @@ import {
   Button,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import styles from "../styles/page.module.css";
+import styles from "../styles/HomePage.module.css";
 
 const Home = () => {
   const [items, setItems] = useState([]);
