@@ -20,22 +20,25 @@
 }
 
 .card {
+  border-radius: 0.8rem;
   margin-bottom: 1rem;
-  background-color: var(--card-background-color);
-  color: var(--text-color);
+  background-color: black;
+  color: white;
   padding: 1rem;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .button {
-  background-color: var(--button-background-color) !important;
+  border-radius: 1.5rem;
+  background-color: crimson !important;
   color: var(--button-text-color) !important;
   margin-left: 1rem;
+  margin-right: 2rem;
 }
 
 .editButton {
   margin-top: 1rem;
-  background-color: var(--button-background-color) !important;
+  background-color: crimson !important;
   color: var(--button-text-color) !important;
 }
 
