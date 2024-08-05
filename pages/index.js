@@ -18,14 +18,20 @@ import {
   ListItem,
   IconButton,
   Button,
+  Switch,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import styles from "../styles/HomePage.module.css";
+import styles from "../styles/HomePage.module.css"; // Adjust the import path if necessary
 
 const Home = () => {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [currentId, setCurrentId] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const handleThemeChange = () => {
+    setDarkMode(!darkMode);
+  };
 
   useEffect(() => {
     const q = query(collection(db, "pantry"));
@@ -60,6 +66,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <h1>Pantry Management</h1>
+      <Switch checked={darkMode} onChange={handleThemeChange} />
       <div className={styles.form}>
         <PantryForm
           currentId={currentId}
@@ -74,26 +81,28 @@ const Home = () => {
         {filteredItems.map((item) => (
           <ListItem key={item.id}>
             <Card className={styles.card}>
-              <CardContent>
+              <CardContent className={styles.cardContent}>
                 <Typography variant="h5" component="div">
                   {item.name}
                 </Typography>
                 <Typography variant="body2">
                   Quantity: {item.quantity}
                 </Typography>
-                <IconButton
-                  onClick={() => handleDelete(item.id)}
-                  aria-label="delete"
-                  className={styles.button}
-                >
-                  <DeleteIcon />
-                </IconButton>
-                <Button
-                  onClick={() => setCurrentId(item.id)}
-                  className={styles.editButton}
-                >
-                  Edit
-                </Button>
+                <div className={styles.buttonContainer}>
+                  <IconButton
+                    onClick={() => handleDelete(item.id)}
+                    aria-label="delete"
+                    className={styles.button}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                  <Button
+                    onClick={() => setCurrentId(item.id)}
+                    className={styles.editButton}
+                  >
+                    Edit
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </ListItem>

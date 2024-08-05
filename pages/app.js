@@ -1,28 +1,21 @@
-// pages/_app.js
 import * as React from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#556cd6",
-    },
-    secondary: {
-      main: "#19857b",
-    },
-    error: {
-      main: "#red",
-    },
-  },
-});
+import { lightTheme, darkTheme } from "../theme";
+import { useState, useEffect } from "react";
+import Switch from "@mui/material/Switch";
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
+  const [darkMode, setDarkMode] = useState(false);
 
-  React.useEffect(() => {
+  const handleThemeChange = () => {
+    setDarkMode(!darkMode);
+  };
+
+  useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
@@ -38,8 +31,9 @@ export default function MyApp(props) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <CssBaseline />
+        <Switch checked={darkMode} onChange={handleThemeChange} />
         <Component {...pageProps} />
       </ThemeProvider>
     </React.Fragment>
